@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Transat Tools</title>
+        <script src="navbar.js"></script>
+        <script src="popup.js"></script>
+        <script src="link.js"></script>
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="styles.css"
+        />
+
+        <link
+            rel="preconnect"
+            href="https://fonts.googleapis.com"
+        />
+        <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossorigin
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <!-- <button id="printTabLink">
+            Print Current Tab Link
+        </button> -->
+        <a
+            id="logo"
+            href="https://transattelecom.ca/internet"
+            ><img src="/banner.jpg"
+        /></a>
+
+        <!-- <nav class="navbar">
+            <ul id="nav-bar">
+                <li class="nav-item troubleshooting">
+                    <a data-field="field1" href="#">1</a>
+                </li>
+                <li class="nav-item customer-service">
+                    <a data-field="field2" href="#">2</a>
+                </li>
+                <li class="nav-item text">
+                    <a data-field="field3" href="#">3</a>
+                </li>
+                <li class="nav-item others">
+                    <a data-field="field4" href="#">4</a>
+                </li>
+            </ul>
+        </nav> -->
+        <div class="container">
+            <section id="field1" class="field-group">
+                <input
+                    placeholder="Show"
+                    type="text"
+                    id="customer-service-id"
+                    name="customer-service-id"
+                /><br />
+                <div class="show-buttons">
+                    <button id="customer-service-btn">
+                        Show
+                    </button>
+                    <button id="customer-intervention-btn">
+                        Intervention
+                    </button>
+                </div>
+                <br /><br />
+
+                <input
+                    placeholder="t1radius"
+                    type="text"
+                    id="radius-id"
+                    name="radius-id"
+                /><br />
+                <button id="radius-id-btn">
+                    Open Radius</button
+                ><br /><br />
+
+                <input
+                    placeholder="TRT-XXX-01"
+                    type="text"
+                    id="bell-id"
+                    name="bell-id"
+                /><br />
+                <button id="bell-id-btn">Open Bell</button
+                ><br /><br />
+
+                <input
+                    placeholder="VLXXXXX"
+                    type="text"
+                    id="vl-id"
+                    name="vl-id"
+                /><br />
+                <button id="vl-id-btn">Open Extranet</button
+                ><br /><br />
+                <input
+                    placeholder="ZIP CODE"
+                    type="text"
+                    id="maps-id"
+                    name="vl-id"
+                /><br />
+                <button id="maps-id-btn">Open Maps</button
+                ><br /><br />
+                <div class="buttons-container">
+                    <button id="nms-btn">NMS</button
+                    ><br /><br />
+                    <button id="interventions-btn">
+                        Interventions</button
+                    ><br /><br />
+                    <button id="tasks-btn">Tasks</button
+                    ><br /><br />
+                </div>
+            </section>
+            <section id="field2" class="field-group hidden">
+                <input
+                    placeholder="ZIP CODE"
+                    type="text"
+                    id="maps-id"
+                    name="vl-id"
+                /><br />
+                <button id="maps-id-btn">Open Maps</button
+                ><br /><br />
+            </section>
+            <section id="field3" class="field-group hidden">
+                <input
+                    placeholder="LINK"
+                    type="text"
+                    id="link"
+                /><br />
+                <button id="link-btn">GET LINK</button
+                ><br /><br />
+            </section>
+            <section id="field4" class="field-group hidden">
+                <p>Tex3t</p>
+            </section>
+        </div>
+    </body>
+</html>
