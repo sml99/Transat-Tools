@@ -79,6 +79,10 @@ body {
         radial-gradient(circle, #ee0000 20%, transparent 20%), radial-gradient(circle, #ee0000 20%, transparent 20%);
     background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
 }
+
+.bubbly-button:hover {
+    background-color: #ff2c07;
+}
 .bubbly-button:active {
     transform: scale(0.9);
     background-color: #e60074;

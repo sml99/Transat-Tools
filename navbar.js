@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     navLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
+            navLinks.forEach((link) => link.classList.remove("active"));
+            link.classList.add("active");
 
             // Remove 'hidden' class from the selected field-group and add it to the others
             const fieldId = e.target.getAttribute("data-field");
