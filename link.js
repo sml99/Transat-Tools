@@ -1,5 +1,4 @@
-const crmLink =
-    "http://10.40.99.8:8080/Transat-CRM/Client/";
+const crmLink = "http://10.40.99.8:8080/Transat-CRM/Client/";
 
 document.addEventListener("DOMContentLoaded", function () {
     function openTab(url) {
@@ -7,11 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Define variables for the input elements
-    const customerServiceInput = document.getElementById(
-        "customer-service-id"
-    );
-    const radiusIdInput =
-        document.getElementById("radius-id");
+    const customerServiceInput = document.getElementById("customer-service-id");
+    const radiusIdInput = document.getElementById("radius-id");
     const bellIdInput = document.getElementById("bell-id");
     const vlIdInput = document.getElementById("vl-id");
     const mapsIdInput = document.getElementById("maps-id");
@@ -20,24 +16,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Define variables for the buttons
     const logoImage = document.getElementById("logo");
-    const customerServiceBtn = document.getElementById(
-        "customer-service-btn"
-    );
-    const customerInterBtn = document.getElementById(
-        "customer-intervention-btn"
-    );
-    const radiusIdBtn =
-        document.getElementById("radius-id-btn");
-    const bellIdBtn =
-        document.getElementById("bell-id-btn");
+    const customerServiceBtn = document.getElementById("customer-service-btn");
+    const customerInterBtn = document.getElementById("customer-intervention-btn");
+    const radiusIdBtn = document.getElementById("radius-id-btn");
+    const bellIdBtn = document.getElementById("bell-id-btn");
     const vlIdBtn = document.getElementById("vl-id-btn");
-    const mapsIdBtn =
-        document.getElementById("maps-id-btn");
-    const trackIdBtn =
-        document.getElementById("track-btn");
-    const interventionsBtn = document.getElementById(
-        "interventions-btn"
-    );
+    const mapsIdBtn = document.getElementById("maps-id-btn");
+    const trackIdBtn = document.getElementById("track-btn");
+    const interventionsBtn = document.getElementById("interventions-btn");
     const tasksBtn = document.getElementById("tasks-btn");
     const nmsBtn = document.getElementById("nms-btn");
     const shippingBtn = document.getElementById("shippings-btn");
@@ -45,46 +31,34 @@ document.addEventListener("DOMContentLoaded", function () {
     /////////////////
     let lastInterventionLink = "";
     // Handle event
-    chrome.runtime.onMessage.addListener(
-        (request, sender, sendResponse) => {
-            const response = request.parsed;
-            if (response) {
-                if (response.show != "1")
-                    customerServiceInput.value =
-                        response.show;
-                mapsIdInput.value = response.zip ?? "";
-                vlIdInput.value = response.vl ?? "";
-                bellIdInput.value = response.trt ?? "";
-                radiusIdInput.value = response.t1 ?? "";
-                lastInterventionLink =
-                    response.lastInterventionLink;
-            }
-	    const radiusResponse = request.rParsed;
-	    ipInput.value = radiusResponse.ip;
-            // else customerServiceInput.value = request.url;
+    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+        const response = request.parsed;
+        if (response) {
+            if (response.show != "1") customerServiceInput.value = response.show;
+            mapsIdInput.value = response.zip ?? "";
+            vlIdInput.value = response.vl ?? "";
+            bellIdInput.value = response.trt ?? "";
+            radiusIdInput.value = response.t1 ?? "";
+            lastInterventionLink = response.lastInterventionLink;
         }
-    );
+        const radiusResponse = request.rParsed;
+        ipInput.value = radiusResponse.ip ?? "";
+        // else customerServiceInput.value = request.url;
+    });
 
     // Add click event listeners to the buttons
-    customerServiceBtn.addEventListener(
-        "click",
-        function () {
-            const customerId = customerServiceInput.value;
-            const url =
-                "http://10.40.99.8:8080/Transat-CRM/Client/show-" +
-                customerId +
-                "-client";
+    customerServiceBtn.addEventListener("click", function () {
+        const customerId = customerServiceInput.value;
+        const url = "http://10.40.99.8:8080/Transat-CRM/Client/show-" + customerId + "-client";
 
-            if (customerId) {
-                openTab(url);
-            }
+        if (customerId) {
+            openTab(url);
         }
-    );
+    });
 
     customerInterBtn.addEventListener("click", function () {
         //Open last intervention
-        if (lastInterventionLink)
-            openTab(lastInterventionLink);
+        if (lastInterventionLink) openTab(lastInterventionLink);
     });
 
     logoImage.addEventListener("click", function () {
@@ -95,9 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     radiusIdBtn.addEventListener("click", function () {
         const radiusId = radiusIdInput.value;
         const url =
-            "http://10.10.10.30/radiusmanager/admin.php?cont=edit_user&username=" +
-            radiusId +
-            "@transattelecom.ca";
+            "http://10.10.10.30/radiusmanager/admin.php?cont=edit_user&username=" + radiusId + "@transattelecom.ca";
         if (radiusId) openTab(url);
     });
 
@@ -113,8 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     vlIdBtn.addEventListener("click", function () {
         const vlId = vlIdInput.value;
         const url =
-            "https://extranet.videotron.com/services/secur/extranet/tpia/Usage.do?lang=FRENCH&compteInternet=" +
-            vlId;
+            "https://extranet.videotron.com/services/secur/extranet/tpia/Usage.do?lang=FRENCH&compteInternet=" + vlId;
         if (vlId) openTab(url);
     });
 
@@ -132,20 +103,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const trackId = trackIdInput.value;
         const formattedTrackId = trackId.split(" ").join("");
         const url = "https://www.canadapost-postescanada.ca/track-reperage/fr#/details/" + formattedTrackId;
-//        if (trackId) 
-		openTab(url);
+        //        if (trackId)
+        openTab(url);
     });
 
-
     interventionsBtn.addEventListener("click", function () {
-        const url =
-            "http://10.40.99.8:8080/Transat-CRM/Client/listFichInterStatusUser-0";
+        const url = "http://10.40.99.8:8080/Transat-CRM/Client/listFichInterStatusUser-0";
         openTab(url);
     });
 
     tasksBtn.addEventListener("click", function () {
-        const url =
-            "http://10.40.99.8:8080/Transat-CRM/Client/taskcritiques";
+        const url = "http://10.40.99.8:8080/Transat-CRM/Client/taskcritiques";
         openTab(url);
     });
 
@@ -170,17 +138,14 @@ async function scrapeIt() {
     });
     const url = tab.url;
     if (url.match(crmLink)) {
-        document.getElementById(
-            "customer-service-id"
-        ).value =
-            url.match(/show\-(\d+)\-client/)?.[1] ?? "";
+        document.getElementById("customer-service-id").value = url.match(/show\-(\d+)\-client/)?.[1] ?? "";
 
         chrome.scripting.executeScript({
             target: { tabId: tab.id },
             func: scrapeDataFromCRM,
         });
     }
-   /* if (url.match("http://10.10.10.30/radiusmanager/admin.php"))
+    /* if (url.match("http://10.10.10.30/radiusmanager/admin.php"))
 	chrome.scripting.executeScript({
             target: { tabId: tab.id },
             func: scrapeDataFromRadius,
@@ -202,14 +167,12 @@ alert(document.body.innerHTML.match(nikbrk));
 function scrapeDataFromCRM() {
     const bellRegex = /TRT-\d+-\d{2}/;
     const vlRegex = /[Vv][Ll][A-Za-z]+/;
-    const t1Regex =
-        /Code Radius :<\/strong><\/td>[.\s]+<td>([a-zA-Z\d]+)</;
+    const t1Regex = /Code Radius :<\/strong><\/td>[.\s]+<td>([a-zA-Z\d]+)</;
     const mapRegex = /[A-Za-z]\d[A-Za-z]\s*\d[A-Za-z]\d/;
     const mapDRegex = /[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d/;
     const mapCRegex = /Adresse :[.\s\S]+([A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d)[\s]*/;
     const lastInterventionRegex = /updateintervention-\d+/;
-    const linkStart =
-        "http://10.40.99.8:8080/Transat-CRM/Client/";
+    const linkStart = "http://10.40.99.8:8080/Transat-CRM/Client/";
     // const showIdIntervRegex = /value\"(\d+)\">/;
 
     const html = document.body.innerHTML;
@@ -220,9 +183,8 @@ function scrapeDataFromCRM() {
         trt: html.match(bellRegex),
         vl: html.match(vlRegex),
         t1: html.match(t1Regex)?.[1],
-        zip: html.match(mapDRegex),//?.[1],
-        lastInterventionLink:
-            linkStart + html.match(lastInterventionRegex),
+        zip: html.match(mapDRegex), //?.[1],
+        lastInterventionLink: linkStart + html.match(lastInterventionRegex),
     };
 
     // Emit event
