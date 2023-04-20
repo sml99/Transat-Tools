@@ -36,22 +36,28 @@
             ><img src="/banner.jpg"
         /></a>
 
-        <!-- <nav class="navbar">
+         <nav class="navbar">
             <ul id="nav-bar">
-                <li class="nav-item troubleshooting">
-                    <a data-field="field1" href="#">1</a>
+                <li data-field="field1" class="nav-item troubleshooting">
+	                <a data-field="field1" href="#">
+				<img data-field="field1" src="icons/home.png" class="icon"/>
+			</a>
                 </li>
-                <li class="nav-item customer-service">
+                <!--<li class="nav-item customer-service">
                     <a data-field="field2" href="#">2</a>
+                </li>-->
+                <li data-field="field3" class="nav-item text">		    
+                    <a data-field="field3" href="#">
+			<img data-field="field3" src="icons/globe.png" class="icon"/>
+		    </a>
                 </li>
-                <li class="nav-item text">
-                    <a data-field="field3" href="#">3</a>
-                </li>
-                <li class="nav-item others">
-                    <a data-field="field4" href="#">4</a>
+                <li data-field="field4" class="nav-item others">
+	                <a data-field="field4" href="#">
+				<img data-field="field4" src="icons/copy.png" class="icon"/>
+			</a>
                 </li>
             </ul>
-        </nav> -->
+        </nav> 
         <div class="container">
             <section id="field1" class="field-group">
                 <input
@@ -97,45 +103,44 @@
                 /><br />
                 <button id="vl-id-btn">Open Extranet</button
                 ><br /><br />
-                <input
-                    placeholder="ZIP CODE"
-                    type="text"
-                    id="maps-id"
-                    name="vl-id"
-                /><br />
-                <button id="maps-id-btn">Open Maps</button
-                ><br /><br />
                 <div class="buttons-container">
-                    <button id="nms-btn">NMS</button
-                    ><br /><br />
-                    <button id="interventions-btn">
-                        Interventions</button
-                    ><br /><br />
-                    <button id="tasks-btn">Tasks</button
-                    ><br /><br />
+                    <button id="nms-btn">NMS</button>
+                    <button id="interventions-btn">Interventions</button>
+                    <button id="tasks-btn">Tasks</button>
                 </div>
             </section>
             <section id="field2" class="field-group hidden">
+                <p>FK</p>
+            </section>
+            <section id="field3" class="field-group hidden">
+                <input
+                    placeholder="XXXX XXXX XXXX XXXX"
+                    type="text"
+                    id="track-input"
+                />
+   		<div class="show-buttons">
+                    <button id="track-btn">TRACK</button>
+                    <button id="shippings-btn">
+                        Shippings
+                    </button>
+                </div>
+                <br /><br />                
                 <input
                     placeholder="ZIP CODE"
                     type="text"
                     id="maps-id"
                     name="vl-id"
                 /><br />
-                <button id="maps-id-btn">Open Maps</button
-                ><br /><br />
-            </section>
-            <section id="field3" class="field-group hidden">
-                <input
-                    placeholder="LINK"
-                    type="text"
-                    id="link"
-                /><br />
-                <button id="link-btn">GET LINK</button
-                ><br /><br />
+                <button id="maps-id-btn">Open Maps</button>
+                <br /><br />                
             </section>
             <section id="field4" class="field-group hidden">
-                <p>Tex3t</p>
+                <h1><b>Press to copy</b></h1></br>
+		<input id="zte-button-ad" placeholder="Admin" type="text"/>
+  		<input id="zte-button" placeholder="Zte@Consumers251" type="text"/>
+	        <input id="zte-button-tr" placeholder="Transat20" type="text"/> </br>
+
+  <script src="popup.js"></script>
             </section>
         </div>
     </body>

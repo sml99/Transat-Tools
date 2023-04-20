@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const bellIdInput = document.getElementById("bell-id");
     const vlIdInput = document.getElementById("vl-id");
     const mapsIdInput = document.getElementById("maps-id");
+    const trackIdInput = document.getElementById("track-input");
+    const ipInput = document.getElementById("ip-id");
 
     // Define variables for the buttons
     const logoImage = document.getElementById("logo");
@@ -31,11 +33,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const vlIdBtn = document.getElementById("vl-id-btn");
     const mapsIdBtn =
         document.getElementById("maps-id-btn");
+    const trackIdBtn =
+        document.getElementById("track-btn");
     const interventionsBtn = document.getElementById(
         "interventions-btn"
     );
     const tasksBtn = document.getElementById("tasks-btn");
     const nmsBtn = document.getElementById("nms-btn");
+    const shippingBtn = document.getElementById("shippings-btn");
 
     /////////////////
     let lastInterventionLink = "";
@@ -54,6 +59,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 lastInterventionLink =
                     response.lastInterventionLink;
             }
+	    const radiusResponse = request.rParsed;
+	    ipInput.value = radiusResponse.ip;
             // else customerServiceInput.value = request.url;
         }
     );
@@ -121,6 +128,15 @@ document.addEventListener("DOMContentLoaded", function () {
         if (mapsId) openTab(url);
     });
 
+    trackIdBtn.addEventListener("click", function () {
+        const trackId = trackIdInput.value;
+        const formattedTrackId = trackId.split(" ").join("");
+        const url = "https://www.canadapost-postescanada.ca/track-reperage/fr#/details/" + formattedTrackId;
+//        if (trackId) 
+		openTab(url);
+    });
+
+
     interventionsBtn.addEventListener("click", function () {
         const url =
             "http://10.40.99.8:8080/Transat-CRM/Client/listFichInterStatusUser-0";
@@ -134,8 +150,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     nmsBtn.addEventListener("click", function () {
-        const url =
-            "https://aitp-tpia.videotron.com/prodfsi/tpias/";
+        const url = "https://aitp-tpia.videotron.com/prodfsi/tpias/";
+        openTab(url);
+    });
+
+    shippingBtn.addEventListener("click", function () {
+        const url = "http://10.40.99.8:8080/Transat-CRM/shipping/1";
         openTab(url);
     });
 
@@ -160,7 +180,24 @@ async function scrapeIt() {
             func: scrapeDataFromCRM,
         });
     }
+   /* if (url.match("http://10.10.10.30/radiusmanager/admin.php"))
+	chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: scrapeDataFromRadius,
+        });   */
 }
+
+/*function scrapeDataFromRadius() {
+//const regex = /^([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])$/;
+const regex = /online/;
+//    const ipRegex = /\"(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\"/;
+const nikbrk = /\d+\.\d+\.\d+\.\d{3}+/
+alert(document.body.innerHTML.match(nikbrk));
+    const rParsed = {
+           ip: document.body.innerHTML.match(regex),
+    };
+    chrome.runtime.sendMessage({rParsed});
+}*/
 
 function scrapeDataFromCRM() {
     const bellRegex = /TRT-\d+-\d{2}/;
@@ -168,6 +205,8 @@ function scrapeDataFromCRM() {
     const t1Regex =
         /Code Radius :<\/strong><\/td>[.\s]+<td>([a-zA-Z\d]+)</;
     const mapRegex = /[A-Za-z]\d[A-Za-z]\s*\d[A-Za-z]\d/;
+    const mapDRegex = /[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d/;
+    const mapCRegex = /Adresse :[.\s\S]+([A-Za-z]\d[A-Za-z]\s?\d[A-Za-z]\d)[\s]*/;
     const lastInterventionRegex = /updateintervention-\d+/;
     const linkStart =
         "http://10.40.99.8:8080/Transat-CRM/Client/";
@@ -181,7 +220,7 @@ function scrapeDataFromCRM() {
         trt: html.match(bellRegex),
         vl: html.match(vlRegex),
         t1: html.match(t1Regex)?.[1],
-        zip: html.match(mapRegex),
+        zip: html.match(mapDRegex),//?.[1],
         lastInterventionLink:
             linkStart + html.match(lastInterventionRegex),
     };

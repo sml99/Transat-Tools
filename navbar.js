@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Select nav-bar links and field-group elements
     const navLinks =
-        document.querySelectorAll("#nav-bar a");
+        document.querySelectorAll("#nav-bar li");
     const fieldGroups =
         document.querySelectorAll(".field-group");
 
