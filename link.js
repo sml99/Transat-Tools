@@ -12,7 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const vlIdInput = document.getElementById("vl-id");
     const mapsIdInput = document.getElementById("maps-id");
     const trackIdInput = document.getElementById("track-input");
-    const ipInput = document.getElementById("ip-id");
+    const searchInput = document.getElementById("search-input");
+    const macInput = document.getElementById("mac-input");
+    // const ipInput = document.getElementById("ip-id");
 
     // Define variables for the buttons
     const logoImage = document.getElementById("logo");
@@ -34,13 +36,15 @@ document.addEventListener("DOMContentLoaded", function () {
     chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         const response = request.parsed;
         if (response) {
-            if (response.show != "1") customerServiceInput.value = response.show;
+            if (response.show > 10) customerServiceInput.value = response.show;
+            macInput.value = response.mac ?? "";
             mapsIdInput.value = response.zip ?? "";
             vlIdInput.value = response.vl ?? "";
             bellIdInput.value = response.trt ?? "";
             radiusIdInput.value = response.t1 ?? "";
             lastInterventionLink = response.lastInterventionLink;
         }
+        searchInput.value = request.number ?? "";
         const radiusResponse = request.rParsed;
         ipInput.value = radiusResponse.ip ?? "";
         // else customerServiceInput.value = request.url;
@@ -137,6 +141,7 @@ async function scrapeIt() {
         // lastFocusedWindow: true,
     });
     const url = tab.url;
+
     if (url.match(crmLink)) {
         document.getElementById("customer-service-id").value = url.match(/show\-(\d+)\-client/)?.[1] ?? "";
 
@@ -145,26 +150,31 @@ async function scrapeIt() {
             func: scrapeDataFromCRM,
         });
     }
-    /* if (url.match("http://10.10.10.30/radiusmanager/admin.php"))
-	chrome.scripting.executeScript({
+
+    if (url.match("https://10.40.99.5/realtime/"))
+        chrome.scripting.executeScript({
             target: { tabId: tab.id },
-            func: scrapeDataFromRadius,
-        });   */
+            func: scrapeCall,
+        });
 }
 
-/*function scrapeDataFromRadius() {
-//const regex = /^([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])$/;
-const regex = /online/;
-//    const ipRegex = /\"(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\"/;
-const nikbrk = /\d+\.\d+\.\d+\.\d{3}+/
-alert(document.body.innerHTML.match(nikbrk));
-    const rParsed = {
-           ip: document.body.innerHTML.match(regex),
-    };
-    chrome.runtime.sendMessage({rParsed});
-}*/
+function scrapeCall() {
+    alert("Tet");
+    const regex = /<span class=\"callerIdNumber\">([\s\d\(\)\-]+)<\/span>/;
+    const regex2 = /data-number=\"([\s\d\(\)\-]+)\"/;
+    //	alert(document.body.innerHTML.match(regex)?.[1]);
+    const num = document.body.innerHTML.match(regex)?.[1] ?? document.body.innerHTML.match(regex2)?.[1];
+    if (num) {
+        //alert(num);
+        const number = num.replace(/\D/g, "");
+        //alert(number);
+        chrome.runtime.sendMessage({ number });
+    }
+}
 
 function scrapeDataFromCRM() {
+    alert("Tet");
+    const macRegex = /[A-Fa-f0-9]{12}/;
     const bellRegex = /TRT-\d+-\d{2}/;
     const vlRegex = /[Vv][Ll][A-Za-z]+/;
     const t1Regex = /Code Radius :<\/strong><\/td>[.\s]+<td>([a-zA-Z\d]+)</;
@@ -175,16 +185,19 @@ function scrapeDataFromCRM() {
     const linkStart = "http://10.40.99.8:8080/Transat-CRM/Client/";
     // const showIdIntervRegex = /value\"(\d+)\">/;
 
-    const html = document.body.innerHTML;
+    const fullHtml = document.body.innerHTML;
+    const html = document.getElementById("profile")?.innerHTML ?? fullHtml;
     const showId = html.match(/value=\"(\d+)\">/)[1];
+    const lastInterv = fullHtml.match(lastInterventionRegex);
 
     const parsed = {
         show: showId,
+        mac: html.match(macRegex),
         trt: html.match(bellRegex),
         vl: html.match(vlRegex),
         t1: html.match(t1Regex)?.[1],
         zip: html.match(mapDRegex), //?.[1],
-        lastInterventionLink: linkStart + html.match(lastInterventionRegex),
+        lastInterventionLink: lastInterv ? linkStart + lastInterv : "",
     };
 
     // Emit event

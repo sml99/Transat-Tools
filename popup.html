@@ -1,101 +1,160 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Transat Tools</title>
-        <script src="navbar.js"></script>
-        <script src="popup.js"></script>
-        <script src="link.js"></script>
-        <link rel="stylesheet" type="text/css" href="extraStyles.css" />
-        <link rel="stylesheet" type="text/css" href="field4.css" />
-        <link rel="stylesheet" type="text/css" href="styles.css" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
-    </head>
+<head>
+  <title>Transat Tools</title>
+  <script src="navbar.js"></script>
+  <script src="popup.js"></script>
+  <script src="link.js"></script>
+  <link rel="stylesheet" type="text/css" href="extraStyles.css" />
+  <link rel="stylesheet" type="text/css" href="field4.css" />
+  <link rel="stylesheet" type="text/css" href="styles.css" />
 
-    <body>
-        <!-- <button id="printTabLink">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- <button id="printTabLink">
             Print Current Tab Link
         </button> -->
-        <a id="logo" href="https://transattelecom.ca/internet"><img src="/banner.jpg" /></a>
+  <a id="logo" href="https://transattelecom.ca/internet"><img src="/banner.jpg" /></a>
 
-        <nav class="navbar">
-            <ul id="nav-bar">
-                <li data-field="field1" class="nav-item active">
-                    <a data-field="field1" href="#">
-                        <img data-field="field1" src="icons/home.png" class="icon" />
+  <nav class="navbar">
+    <ul id="nav-bar">
+      <li data-field="field1" class="nav-item active">
+        <a data-field="field1" href="#">
+          <img data-field="field1" src="icons/home.png" class="icon" />
+        </a>
+      </li>
+      <!--<li class="nav-item customer-service">
+                    <a data-field="field2" href="#">
+                        <img data-field="field2" src="icons/home.png" class="icon" />
                     </a>
-                </li>
-                <!--<li class="nav-item customer-service">
-                    <a data-field="field2" href="#">2</a>
                 </li>-->
-                <li data-field="field3" class="nav-item">
-                    <a data-field="field3" href="#">
-                        <img data-field="field3" src="icons/globe.png" class="icon" />
-                    </a>
-                </li>
-                <li data-field="field4" class="nav-item">
-                    <a data-field="field4" href="#">
-                        <img data-field="field4" src="icons/copy.png" class="icon" />
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="container">
-            <section id="field1" class="field-group">
-                <input placeholder="Show" type="text" id="customer-service-id" name="customer-service-id" /><br />
-                <div class="show-buttons">
-                    <button id="customer-service-btn">Show</button>
-                    <button id="customer-intervention-btn">Intervention</button>
-                </div>
-                <br /><br />
+      <li data-field="field3" class="nav-item">
+        <a data-field="field3" href="#">
+          <img data-field="field3" src="icons/globe.png" class="icon" />
+        </a>
+      </li>
+      <li data-field="field4" class="nav-item">
+        <a data-field="field4" href="#">
+          <img data-field="field4" src="icons/copy.png" class="icon" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container">
+    <section id="field1" class="field-group">
+      <div class="search-container">
+        <form method="POST" action="http://10.40.99.8:8080/Transat-CRM/dashboard/" target="_blank">
+          <input id="search-input" type="text" name="anyattribute" placeHolder="Search" value>
+          <button type="submit">Search</button>
+        </form>
+      </div>
 
-                <input placeholder="t1radius" type="text" id="radius-id" name="radius-id" /><br />
-                <button id="radius-id-btn">Open Radius</button><br /><br />
-
-                <input placeholder="TRT-XXX-01" type="text" id="bell-id" name="bell-id" /><br />
-                <button id="bell-id-btn">Open Bell</button><br /><br />
-
-                <input placeholder="VLXXXXX" type="text" id="vl-id" name="vl-id" /><br />
-                <button id="vl-id-btn">Open Extranet</button><br /><br />
-                <div class="buttons-container">
-                    <button id="nms-btn">NMS</button>
-                    <button id="interventions-btn">Interventions</button>
-                    <button id="tasks-btn">Tasks</button>
-                </div>
-            </section>
-            <!-- <section id="field2" class="field-group hidden">
-                <p>FK</p>
-            </section> -->
-            <section id="field3" class="field-group hidden">
-                <input placeholder="XXXX XXXX XXXX XXXX" type="text" id="track-input" />
-                <div class="show-buttons">
-                    <button id="track-btn">TRACK</button>
-                    <button id="shippings-btn">Shippings</button>
-                </div>
-                <br /><br />
-                <input placeholder="ZIP CODE" type="text" id="maps-id" name="vl-id" /><br />
-                <button id="maps-id-btn">Open Maps</button>
-                <br /><br />
-            </section>
-            <section id="field4" class="field-group hidden">
-                <div class="login-box">
-                    <a href="#">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Press to copy
-                    </a>
-                </div>
-                <div class="copy-buttons">
-                    <button class="bubbly-button" id="zte-button-ad">Admin</button>
-                    <button class="bubbly-button" id="zte-button">Zte@Consumers251</button>
-                    <button class="bubbly-button" id="zte-button-tr">Transat20</button>
-                </div>
-            </section>
+      <input placeholder="Show" type="text" id="customer-service-id" name="customer-service-id" /><br />
+      <div class="show-buttons">
+        <button id="customer-service-btn">Show</button>
+        <button id="customer-intervention-btn">Intervention</button>
+      </div>
+      <br /><br />
+      <div class="show-buttons">
+        <input placeholder="t1radius" type="text" id="radius-id" name="radius-id" /><br />
+        <button id="radius-id-btn">Radius</button><br />
+      </div>
+      <br>
+      <div class="show-buttons">
+        <input placeholder="TRT-XXX-01" type="text" id="bell-id" name="bell-id" /><br />
+        <button id="bell-id-btn">Bell</button><br /><br />
+      </div>
+      <br>
+      <br>
+      <br>
+      <!-- <div class="search-container"> -->
+      <for method="POST" action="https://aitp-tpia.videotron.com/prodfsi/webNms/getTPIAHistoriqueAjax.html"
+        target="_blank">
+        <!-- <input type="text" name="inputType" value="Mac"> -->
+        <div class="show-buttons">
+          <input class="mac-address" id="mac-input" type="text" placeholder="MAC @" name="inputValue" value>
+          <input class="number-days" type="text" name="nbOfDays" placeholder="Days">
+          <input type="hidden" name="startDate" value="">
+          <input type="hidden" name="endDate" value="">
+          <input type="hidden" name="chosenItemsAsString"
+            value="CmIp|CmCorr_rate|FlapInsert_rate|FlapInsert_delta|FlapMiss_rate|FlapPowerAdj|FlapTotal|CmLostSync_delta|Nbreset_rate|CmGrade|DocsPrimaryChannel|CmRx|CmRx_delta|UbrRx|RegTime|UbrName|CmSn|CmSn_delta|CmStatus|CmTx|CmTx_delta|UsCorr_rate|UsSn|UsUnCorr_rate|UsUnerror_rate|CmUncorr_rate|CmUnerror_rate|CmUptime">
+          <input type="hidden" name="hiddenItemsAsString" value="">
         </div>
-    </body>
-    <script src="popup.js"></script>
+        <br>
+        <div class="show-buttons">
+          <button type="submit">History</button>
+          <button type="submit">Diagnostic</button>
+          <button id="nms-btn">NMS</button>
+        </div>
+        <br>
+        </form>
+
+        <!-- </div> -->
+
+        <!-- <div class="search-container">
+        <form method="POST" action="https://aitp-tpia.videotron.com/prodfsi/webNms/dashboardTPIAQuery.jsf"
+          target="_blank">
+          <input type="hidden" name="mainForm" value="mainForm">
+          <input type="hidden"id="mac-input" type="text" placeholder="MAC @" name="mainForm:inputValueId" value>
+          <input type="hidden" name="mainForm:submitButtonId" value="Soumettre">
+          <input type="hidden" name="javax.faces.ViewState" value="stateless">
+          <button type="submit">Diagnostic</button>
+        </form>
+      </div> -->
+
+        <div class="show-buttons">
+          <input placeholder="VLXXXXX" type="text" id="vl-id" name="vl-id" /><br />
+          <button id="vl-id-btn">Extranet</button><br />
+        </div>
+        </br>
+        <!-- <div class="buttons-container">
+          <button id="nms-btn">Switchboard</button>
+          <button id="interventions-btn">Interventions</button>
+          <button id="tasks-btn">Tasks</button> -->
+        </div>
+    </section>
+
+    <section id="field2" class="field-group hidden">
+      <form method="POST" action="http://10.40.99.8:8080/Transat-CRM/dashboard/" target="_blank">
+        <input type="text" name="anyattribute" value>
+        <button class="bubbly-button" type="submit">Search</button>
+      </form>
+    </section>
+
+    <section id="field3" class="field-group hidden">
+      <input placeholder="XXXX XXXX XXXX XXXX" type="text" id="track-input" />
+      <div class="show-buttons">
+        <button id="track-btn">TRACK</button>
+        <button id="shippings-btn">Shippings</button>
+      </div>
+      <br /><br />
+      <input placeholder="ZIP CODE" type="text" id="maps-id" name="vl-id" /><br />
+      <button id="maps-id-btn">Open Maps</button>
+      <br /><br />
+    </section>
+    <section id="field4" class="field-group hidden">
+      <div class="login-box">
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Press to copy
+        </a>
+      </div>
+      <div class="copy-buttons">
+        <button class="bubbly-button" id="zte-button-ad">Admin</button>
+        <button class="bubbly-button" id="zte-button">Zte@Consumers251</button>
+        <button class="bubbly-button" id="zte-button-tr">Transat20</button>
+      </div>
+    </section>
+  </div>
+</body>
+<script src="popup.js"></script>
+
 </html>
