@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Megrim&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caesar+Dressing&display=swap");
+
 * {
     margin: 0;
     padding: 0;
@@ -12,9 +15,12 @@ html {
 
 body {
     background-color: #fcb714;
-    background: linear-gradient(45deg, #fcb714, #ffaa33);
+    background-image: linear-gradient(45deg, #fcb714, #ffaa33);
+    background-image: url("/background.jpg");
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover;
     color: #212529;
-    /* font-family: "Great Vibes", cursive; */
     width: 300px;
 }
 
@@ -26,9 +32,18 @@ body {
     padding: 10px 0;
 }
 
+button {
+    font-family: "Caesar Dressing", cursive;
+    font-size: 18px !important;
+    font-weight: normal !important;
+}
+
+input,
 input::placeholder {
-    font-family: "Arial", sans-serif;
-    font-size: 12px;
+    font-family: "Megrim", cursive;
+    font-weight: bold;
+    font-size: 16px;
+    height: 36px;
 }
 
 .container {
@@ -41,7 +56,7 @@ input::placeholder {
     padding: 10px;
 }
 
-input[type="text"] {
+input {
     width: 100%;
     padding: 4px;
     border: 1.5px solid #212529;
@@ -51,7 +66,12 @@ input[type="text"] {
     margin-bottom: 4px;
 }
 
-input[type="text"]:focus {
+input {
+    font-weight: bold;
+    /* color: #333; */
+}
+
+input:focus {
     outline: none;
     box-shadow: 0 0 5px #ccc;
     border: 1px solid orange;
@@ -61,9 +81,10 @@ input[type="text"]:focus {
 #field3 button {
     width: 60%;
     background-color: #212529;
+    background-color: #fe5500;
     color: #fff;
-    color: #fe4600;
-    color: #fcb714;
+    /* color: #fe4600; */
+    /* color: #fcb714; */
     font-weight: bold;
     text-transform: uppercase;
     border: none;
@@ -82,13 +103,16 @@ input[type="text"]:focus {
 
 #field1 button:hover,
 #field3 button:hover {
-    background-color: #000;
+    background-color: #333;
 }
 
 .buttons-container {
     width: 100%;
-    height: 55px;
+    /* height: 55px; */
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 0;
 }
 
@@ -111,6 +135,10 @@ input[type="text"]:focus {
     justify-content: center;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.5);
+    /* background-color: #ffbb55; */
+    background-color: #fbab7e;
+    background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
+    /* background-image: linear-gradient(135deg, #fff886 10%, #f072b6 100%); */
     border-bottom: 2px solid #fe4600;
 }
 #logo img {
@@ -122,11 +150,11 @@ input[type="text"]:focus {
     align-items: center;
     justify-content: center;
 }
-
-.search-container form input,
-.show-buttons input {
-    height: 31px !important;
-    /* margin-tops: 1px; */
+button {
+    background-image: linear-gradient(to right, #e44d26 0%, #e44d26 100%);
+}
+button:hover {
+    background-image: linear-gradient(to right, #e44d26 0%, #f16529 51%, #e44d26 100%);
 }
 
 .number-days {
@@ -193,7 +221,6 @@ input[type="text"]:focus {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: -14px;
 }
 
 .show-buttons button {

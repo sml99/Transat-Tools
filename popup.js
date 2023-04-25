@@ -34,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById("zte-button-tr").addEventListener("click", function() {
     copyToClipboard(zteTrPass);
   });
-  document.getElementById("h1000-button").addEventListener("click", function() {
+ /* document.getElementById("h1000-button").addEventListener("click", function() {
     copyToClipboard(h1000Text);
   });
   document.getElementById("h2000-button").addEventListener("click", function() {
     copyToClipboard(h2000Text);
-  });
+  });*/
 });

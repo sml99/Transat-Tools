@@ -7,8 +7,8 @@
   <script src="popup.js"></script>
   <script src="link.js"></script>
   <link rel="stylesheet" type="text/css" href="extraStyles.css" />
-  <link rel="stylesheet" type="text/css" href="field4.css" />
   <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" type="text/css" href="field4.css" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -58,26 +58,24 @@
       <div class="show-buttons">
         <button id="customer-service-btn">Show</button>
         <button id="customer-intervention-btn">Intervention</button>
-      </div>
-      <br /><br />
+      </div><br>
+
       <div class="show-buttons">
-        <input placeholder="t1radius" type="text" id="radius-id" name="radius-id" /><br />
-        <button id="radius-id-btn">Radius</button><br />
+        <input placeholder="t1radius" type="text" id="radius-id" name="radius-id" />
+        <button id="radius-id-btn">Radius</button>
       </div>
-      <br>
       <div class="show-buttons">
-        <input placeholder="TRT-XXX-01" type="text" id="bell-id" name="bell-id" /><br />
-        <button id="bell-id-btn">Bell</button><br /><br />
+        <input placeholder="Trt-xxx-01" type="text" id="bell-id" name="bell-id" />
+        <button id="bell-id-btn">Bell</button>
       </div>
-      <br>
-      <br>
-      <br>
+      <!-- <button id="bell-btn">Bell</button><br /> -->
+      <br><br>
       <!-- <div class="search-container"> -->
       <for method="POST" action="https://aitp-tpia.videotron.com/prodfsi/webNms/getTPIAHistoriqueAjax.html"
         target="_blank">
         <!-- <input type="text" name="inputType" value="Mac"> -->
         <div class="show-buttons">
-          <input class="mac-address" id="mac-input" type="text" placeholder="MAC @" name="inputValue" value>
+          <input class="mac-address" id="mac-input" type="text" placeholder="Mac address" name="inputValue" value>
           <input class="number-days" type="text" name="nbOfDays" placeholder="Days">
           <input type="hidden" name="startDate" value="">
           <input type="hidden" name="endDate" value="">
@@ -85,13 +83,11 @@
             value="CmIp|CmCorr_rate|FlapInsert_rate|FlapInsert_delta|FlapMiss_rate|FlapPowerAdj|FlapTotal|CmLostSync_delta|Nbreset_rate|CmGrade|DocsPrimaryChannel|CmRx|CmRx_delta|UbrRx|RegTime|UbrName|CmSn|CmSn_delta|CmStatus|CmTx|CmTx_delta|UsCorr_rate|UsSn|UsUnCorr_rate|UsUnerror_rate|CmUncorr_rate|CmUnerror_rate|CmUptime">
           <input type="hidden" name="hiddenItemsAsString" value="">
         </div>
-        <br>
         <div class="show-buttons">
           <button type="submit">History</button>
           <button type="submit">Diagnostic</button>
           <button id="nms-btn">NMS</button>
         </div>
-        <br>
         </form>
 
         <!-- </div> -->
@@ -108,15 +104,17 @@
       </div> -->
 
         <div class="show-buttons">
-          <input placeholder="VLXXXXX" type="text" id="vl-id" name="vl-id" /><br />
-          <button id="vl-id-btn">Extranet</button><br />
+          <input placeholder="Vl-xxxxxx" type="text" id="vl-id" name="vl-id" />
+          <button id="vl-id-btn">Extranet</button>
         </div>
-        </br>
         <!-- <div class="buttons-container">
           <button id="nms-btn">Switchboard</button>
           <button id="interventions-btn">Interventions</button>
           <button id="tasks-btn">Tasks</button> -->
-        </div>
+        <!-- </div> -->
+
+        <!-- <button id="vd-id-btn">Videotron</button><br /> -->
+
     </section>
 
     <section id="field2" class="field-group hidden">
@@ -127,15 +125,28 @@
     </section>
 
     <section id="field3" class="field-group hidden">
-      <input placeholder="XXXX XXXX XXXX XXXX" type="text" id="track-input" />
+      <input placeholder="0000 0000 0000 0000" type="text" id="track-input" />
       <div class="show-buttons">
         <button id="track-btn">TRACK</button>
         <button id="shippings-btn">Shippings</button>
       </div>
-      <br /><br />
-      <input placeholder="ZIP CODE" type="text" id="maps-id" name="vl-id" /><br />
+      <br />
+      <input placeholder="Postal code" type="text" id="maps-id" name="vl-id" /><br />
       <button id="maps-id-btn">Open Maps</button>
       <br /><br />
+      <div class="buttons-container">
+        <!-- <button id="nms-btn">Switchboard</button> -->
+        <div class="show-buttons">
+          <button id="interventions-btn">Interventions</button>
+          <button id="tasks-btn">Tasks</button>
+        </div>
+        <div class="show-buttons">
+          <button id="interventions-btn">Videotron</button>
+          <button id="">PBX</button>
+          <button id="">SIP</button>
+        </div>
+        <button id="">Switchboard</button>
+      </div>
     </section>
     <section id="field4" class="field-group hidden">
       <div class="login-box">
