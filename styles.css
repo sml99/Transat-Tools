@@ -103,6 +103,7 @@ input:focus {
 
 #field1 button:hover,
 #field3 button:hover {
+    transform: translateY(-1.5px);
     background-color: #333;
 }
 
