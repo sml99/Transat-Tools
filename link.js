@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
         openTab(url);
     });*/
 
-    nmsBtn.addEventListener("click", function () {
+    nmsBtn?.addEventListener("click", function () {
         const url = "https://aitp-tpia.videotron.com/prodfsi/tpias/";
         openTab(url);
     });
