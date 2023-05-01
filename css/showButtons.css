@@ -1,0 +1,223 @@
+/* button {
+    padding: 8px;
+    margin: 6px 2px;
+    font-size: 16px;
+    letter-spacing: 0.25rem;
+    background-color: #212529;
+    background-color: #fe5500;
+    color: #fe4600;
+    color: #fcb714;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(to right, #e44d26 0%, #e44d26 100%);
+    transform: translateY(-3px);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: translateY(-1.5px);
+    background-color: #333;
+    background-image: linear-gradient(to right, #e44d26 0%, #f16529 51%, #e44d26 100%);
+} 
+
+.show-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.show-buttons .mac-address {
+    flex: 4;
+}
+
+.show-buttons .number-days {
+    flex: 1;
+}
+
+.buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.buttons-container button {
+    width: 100%;
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+.buttons-container button:last-child {
+    width: 100%;
+    margin-right: 0px;
+} */
+
+.form-container {
+    width: 100%;
+}
+
+.show-buttons {
+    width: 96%;
+    height: 42px;
+    margin-top: 6px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.show-buttons input {
+    flex: 10;
+    height: 100%;
+    width: 100%;
+    padding-left: 6px;
+    border: none;
+    background-color: rgb(255, 212, 187);
+}
+
+.show-buttons input:focus,
+.show-buttons input:hover {
+    outline: none;
+    background-color: #ddd;
+}
+
+.show-buttons button {
+    height: 100%;
+    padding: 10px;
+    /* margin: 2px; */
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.show-buttons button:hover {
+    background-color: #eee;
+}
+
+.show-buttons button img {
+    width: 24px;
+    transition: 0.3s ease-out;
+}
+
+.show-buttons button:hover img {
+    transform: scale(1.2);
+}
+
+#number-days {
+    flex: 3;
+}
+
+br {
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+.marginRight {
+    width: 4px;
+}
+
+.navbar img {
+    width: 24px;
+}
+
+.short {
+    max-width: 100px;
+}
+
+.buttons-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.buttons-container button {
+    flex: 1;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 2px;
+    color: #444;
+    color: #fff;
+    background-color: #ff7d3b;
+}
+.buttons-container button:hover {
+    background-color: #fe5500;
+}
+.copy-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.copy-buttons {
+    width: 95%;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* divide the first row into 3 equal columns */
+    grid-template-rows: repeat(2, 1fr); /* divide the grid into 2 equal rows */
+    gap: 10px; /* add some space between the grid items */
+
+    gap: 6px;
+}
+
+.copy-buttons div {
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: transparent;
+    border: 3px solid #ff7d3b;
+    color: #444;
+}
+
+.copy-buttons div:hover {
+    background-color: #ff7d3b;
+    color: #fff;
+}
+
+.copy-buttons div:active {
+    background-color: #ca4300;
+}
+
+#zte-button-ad {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 1;
+}
+
+#zte-button {
+    grid-column: 3 / span 2;
+    grid-row: 1 / span 1;
+}
+
+#zte-button-tr {
+    grid-column: 5 / span 2;
+    grid-row: 1 / span 1;
+}
+
+#sip-button {
+    grid-column: 1 / span 3;
+    grid-row: 2 / span 1;
+}
+
+#gs-button {
+    grid-column: 4 / span 3;
+    grid-row: 2 / span 1;
+}

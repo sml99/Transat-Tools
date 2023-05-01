@@ -6,78 +6,68 @@
         <script src="popup.js"></script>
         <script src="link.js"></script>
         <script src="content.js"></script>
-        <link rel="stylesheet" type="text/css" href="styles.css" />
-        <link rel="stylesheet" type="text/css" href="field4.css" />
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="css/navbar.css" />
+        <link rel="stylesheet" type="text/css" href="css/showButtons.css" />
+        <link rel="stylesheet" type="text/css" href="css/inputs.css" />
     </head>
 
     <body>
-        <!-- <button id="printTabLink">
-            Print Current Tab Link
-        </button> -->
-        <a id="logo" href="https://transattelecom.ca/internet"><img src="/banner.jpg" /></a>
-
-        <nav class="navbar">
-            <ul id="nav-bar">
-                <li data-field="field1" class="nav-item active">
-                    <a data-field="field1" href="#">
-                        <img data-field="field1" src="icons/home.png" class="icon" />
-                    </a>
-                </li>
-                <!--<li class="nav-item customer-service">
-                    <a data-field="field2" href="#">
-                        <img data-field="field2" src="icons/home.png" class="icon" />
-                    </a>
-                </li>-->
-                <li data-field="field3" class="nav-item">
-                    <a data-field="field3" href="#">
-                        <img data-field="field3" src="icons/globe.png" class="icon" />
-                    </a>
-                </li>
-                <li data-field="field4" class="nav-item">
-                    <a data-field="field4" href="#">
-                        <img data-field="field4" src="icons/copy.png" class="icon" />
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="container">
-            <section id="field1" class="field-group">
-                <div class="search-container">
-                    <form
-                        id="search-form"
-                        method="POST"
-                        action="http://10.40.99.8:8080/Transat-CRM/dashboard/"
-                        target="_blank"
-                    >
-                        <input id="search-input" type="text" name="anyattribute" placeholder="Search" value />
-                        <button type="submit">Search</button>
-                    </form>
-                </div>
-
-                <input placeholder="Show" type="text" id="customer-service-id" name="customer-service-id" /><br />
-                <div class="show-buttons">
-                    <button id="customer-service-btn">Show</button>
-                    <button id="customer-intervention-btn">Intervention</button>
-                </div>
-                <br />
-
-                <div class="show-buttons">
-                    <input placeholder="t1radius" type="text" id="radius-id" name="radius-id" />
-                    <button id="radius-id-btn">Radius</button>
-                </div>
-                <div class="show-buttons">
-                    <input placeholder="Trt-xxx-01" type="text" id="bell-id" name="bell-id" />
-                    <button id="bell-id-btn">Bell</button>
-                </div>
-                <br /><br />
-
-                <div class="search-container">
-                    <form id="my-form" method="POST" action="" target="_blank"></form>
+        <div class="content">
+            <!-- <nav class="navbar">
+                <ul id="nav-bar">
+                    <li data-field="field1" class="nav-item active">
+                        <a data-field="field1" href="#">
+                            <img data-field="field1" src="src/home.png" class="icon" />
+                        </a>
+                    </li>
+                    <li data-field="field3" class="nav-item">
+                        <a data-field="field3" href="#">
+                            <img data-field="field3" src="src/globe.png" class="icon" />
+                        </a>
+                    </li>
+                    <li data-field="field4" class="nav-item">
+                        <a data-field="field4" href="#">
+                            <img data-field="field4" src="src/copy.png" class="icon" />
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <br /> -->
+            <div class="container">
+                <section id="field1" class="field-group">
                     <div class="show-buttons">
+                        <div class="search-container">
+                            <form
+                                id="search-form"
+                                method="POST"
+                                action="http://10.40.99.8:8080/Transat-CRM/dashboard/"
+                                target="_blank"
+                                class="show-buttons"
+                            >
+                                <input id="search-input" type="text" name="anyattribute" placeholder="Search" value />
+                                <button type="submit"><img src="src/search.png" alt="search" /></button>
+                            </form>
+                        </div>
+                        <div class="show-buttons short">
+                            <input placeholder="Show" type="text" id="customer-service-id" name="customer-service-id" />
+                            <button id="customer-service-btn"><img src="src/show.png" alt="show" /></button>
+                            <!-- <button id="customer-intervention-btn">!</button> -->
+                        </div>
+                    </div>
+
+                    <br />
+                    <div class="show-buttons">
+                        <input placeholder="t1radius" type="text" id="radius-id" name="radius-id" />
+                        <button id="radius-id-btn"><img src="src/radius.png" alt="Radius" /></button>
+                    </div>
+                    <div class="show-buttons">
+                        <input placeholder="Trt-xxx-01" type="text" id="bell-id" name="bell-id" />
+                        <button id="bell-id-btn"><img src="src/bell.ico" alt="Bell" /></button>
+                    </div>
+                    <br />
+                    <div class="show-buttons">
+                        <form class="hidden" id="my-form" method="POST" action="" target="_blank"></form>
                         <input
                             class="mac-address"
                             id="mac-input"
@@ -86,69 +76,94 @@
                             name="inputValue"
                             value
                         />
+                        <button type="button" id="diag"><img src="src/videotron.ico" alt="Diagnostic" /></button>
                         <input id="number-days" class="number-days" type="text" name="nbOfDays" placeholder="Days" />
-                    </div>
-                    <div class="show-buttons">
-                        <button type="button" id="hist">>History</button>
-                        <button type="button" id="diag">>Diagnostic</button>
-                        <button id="nms-btn" type="button">NMS</button>
+                        <button type="button" id="hist"><img src="src/hist.png" alt="Historic" /></button>
                     </div>
                     <!-- </form> -->
-                </div>
 
-                <div class="show-buttons">
-                    <input placeholder="Vl-xxxxxx" type="text" id="vl-id" name="vl-id" />
-                    <button id="vl-id-btn">Extranet</button>
-                </div>
-            </section>
+                    <div class="show-buttons">
+                        <input placeholder="Vl-xxxxxx" type="text" id="vl-id" name="vl-id" />
+                        <button id="vl-id-btn"><img src="src/extra.png" alt="Extranet" /></button>
+                    </div>
+                    <br />
+                    <div class="show-buttons">
+                        <input placeholder="Postal code" type="text" id="maps-id" name="vl-id" /><br />
+                        <button id="maps-id-btn"><img src="src/maps.png" alt="Open Maps" /></button>
+                    </div>
+                    <div class="show-buttons">
+                        <input placeholder="0000 0000 0000 0000" type="text" id="track-input" />
+                        <button id="track-btn"><img src="src/shipping.png" alt="Track" /></button>
+                    </div>
+                </section>
+                <!--  -->
+                <!--  -->
+                <!--  -->
+                <section id="field2" class="field-group hidden">
+                    <form method="POST" action="http://10.40.99.8:8080/Transat-CRM/dashboard/" target="_blank">
+                        <input type="text" name="anyattribute" value />
+                        <button class="bubbly-button" type="submit">Search</button>
+                    </form>
+                </section>
 
-            <section id="field2" class="field-group hidden">
-                <form method="POST" action="http://10.40.99.8:8080/Transat-CRM/dashboard/" target="_blank">
-                    <input type="text" name="anyattribute" value />
-                    <button class="bubbly-button" type="submit">Search</button>
-                </form>
-            </section>
+                <section id="field3" class="field-group hidden">
+                    <div class="copy-content">
+                        <div class="copy-buttons">
+                            <div class="bubbly-button" id="zte-button-ad">Admin</div>
+                            <div class="bubbly-button" id="zte-button">Zte@C</div>
+                            <div class="bubbly-button" id="zte-button-tr">Tr20</div>
+                            <div class="bubbly-button" id="sip-button">sip.fntl/gs</div>
+                            <div class="bubbly-button" id="gs-button">GS Password</div>
+                        </div>
+                    </div>
 
-            <section id="field3" class="field-group hidden">
-                <input placeholder="0000 0000 0000 0000" type="text" id="track-input" />
-                <div class="show-buttons">
-                    <button id="track-btn">TRACK</button>
-                    <button id="shippings-btn">Shippings</button>
-                </div>
+                    <!-- <div class="show-buttons">
+                        <input placeholder="0000 0000 0000 0000" type="text" id="track-input" />
+                        <button id="track-btn"><img src="src/shipping.png" alt="Track" /></button>
+                    </div>
+                    <div class="show-buttons">
+                        <input placeholder="Postal code" type="text" id="maps-id" name="vl-id" /><br />
+                        <button id="maps-id-btn"><img src="src/maps.png" alt="Open Maps" /></button>
+                    </div>
+                    <br /> -->
+                    <div class="buttons-container">
+                        <!-- <button id="nms-btn">Switchboard</button> -->
+                        <div class="show-buttons">
+                            <button id="interventions-btn">Interventions</button>
+                            <button id="tasks-btn">Tasks</button>
+                        </div>
+                        <div class="show-buttons">
+                            <button id="shippings-btn">Shippings</button>
+                            <button id="bel-btn">Bell</button>
+                            <button id="csv-btn">Videotron</button>
+                        </div>
+                        <div class="show-buttons">
+                            <button id="sb-btn">Switchboard</button>
+                            <button id="sbl-btn">Logs</button>
+                        </div>
+                        <div class="show-buttons">
+                            <button id="pbx-btn">PBX</button>
+                            <button id="sip-btn">SIP</button>
+                            <button id="nms-btn" type="button">NMS</button>
+                        </div>
+                    </div>
+                </section>
+                <section id="field4" class="field-group hidden">
+                    <!-- <div class="copy-buttons">
+                        <div class="bubbly-button" id="zte-button-ad">Admin</div>
+                        <div class="bubbly-button" id="zte-button">Zte Pass</div>
+                        <div class="bubbly-button" id="zte-button-tr">Transat20</div>
+                        <div class="bubbly-button" id="sip-button">sip.fntl/gs</div>
+                        <div class="bubbly-button" id="gs-button">GS Password</div>
+                    </div> -->
+                </section>
                 <br />
-                <input placeholder="Postal code" type="text" id="maps-id" name="vl-id" /><br />
-                <button id="maps-id-btn">Open Maps</button>
-                <br /><br />
-                <div class="buttons-container">
-                    <!-- <button id="nms-btn">Switchboard</button> -->
-                    <div class="show-buttons">
-                        <button id="interventions-btn">Interventions</button>
-                        <button id="tasks-btn">Tasks</button>
-                    </div>
-                    <div class="show-buttons">
-                        <button id="interventions-btn">Videotron</button>
-                        <button id="">PBX</button>
-                        <button id="">SIP</button>
-                    </div>
-                    <button id="">Switchboard</button>
-                </div>
-            </section>
-            <section id="field4" class="field-group hidden">
-                <div class="login-box">
-                    <a href="#">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Press to copy
-                    </a>
-                </div>
-                <div class="copy-buttons">
-                    <div class="bubbly-button" id="zte-button-ad">Admin</div>
-                    <div class="bubbly-button" id="zte-button">Zte@Consumers251</div>
-                    <div class="bubbly-button" id="zte-button-tr">Transat20</div>
-                </div>
-            </section>
+
+                <a id="logo" href="https://transattelecom.ca/internet"
+                    ><img src="src/banner.jpg" alt="Transat Tools"
+                /></a>
+                <br />
+            </div>
         </div>
     </body>
     <script src="popup.js"></script>

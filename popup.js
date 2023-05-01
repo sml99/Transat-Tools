@@ -10,6 +10,8 @@ function copyToClipboard(text) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  var sipCode = "https://sip.fonotel.net/gs";
+  var gsPass = "15143734205";
   // ZTE
   var zteUser = "Admin";
   var ztePass = "Zte@Consumers251";
@@ -25,6 +27,14 @@ document.addEventListener('DOMContentLoaded', function() {
   var h2000Text = "H2000: user: \"" + h2000User + "\"";
 
   // Add event listeners to the buttons
+  document.getElementById("gs-button").addEventListener("click", function() {
+    copyToClipboard(gsPass);
+  });
+
+  document.getElementById("sip-button").addEventListener("click", function() {
+    copyToClipboard(sipCode);
+  });
+
   document.getElementById("zte-button-ad").addEventListener("click", function() {
     copyToClipboard(zteUser);
   });

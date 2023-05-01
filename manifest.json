@@ -15,8 +15,5 @@
       },
       "description": "Show intervention"
     }
-  },
-  "background": {
-    "scripts": ["background.js"]
   }
 }

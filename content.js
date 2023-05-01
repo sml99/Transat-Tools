@@ -1,6 +1,6 @@
 const nmsHist = "https://aitp-tpia.videotron.com/prodfsi/webNms/getTPIAHistoriqueAjax.html";
 const nmsDiag =
-    "https://aitp-tpia.videotron.com/prodfsi/webNms/dashboardTPIAQuery.jsfhttps://aitp-tpia.videotron.com/prodfsi/webNms/dashboardTPIAQuery.jsf";
+    "https://aitp-tpia.videotron.com/prodfsi/webNms/dashboardTPIAQuery.jsf";
 
 document.addEventListener("DOMContentLoaded", function () {
     let form = document.getElementById("my-form");
@@ -29,6 +29,11 @@ document.addEventListener("DOMContentLoaded", function () {
         nbOfDays.type = "hidden";
         nbOfDays.name = "nbOfDays";
         nbOfDays.value = document.getElementById("number-days")?.value ?? 5;
+	if(!nbOfDays.value || nbOfDays.value < 1) nbOfDays.value = 5;
+        let inputType = document.createElement("input");
+        inputType.type = "hidden";
+        inputType.name = "inputType";
+        inputType.value = "Mac";
 
         let startDateInput = document.createElement("input");
         startDateInput.type = "hidden";
@@ -54,6 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Append the hidden input tags to the form
         // let form = document.getElementById("my-form");
         form.appendChild(inputValue);
+        form.appendChild(inputType);
         form.appendChild(nbOfDays);
         form.appendChild(startDateInput);
         form.appendChild(endDateInput);
@@ -80,10 +86,17 @@ document.addEventListener("DOMContentLoaded", function () {
         javax.name = "javax.faces.ViewState";
         javax.value = "stateless";
 
+//mainForm:submitButtonId: Soumettre
+        let smtr = document.createElement("input");
+        smtr.type = "hidden";
+        smtr.name = "mainForm:submitButtonId";
+        smtr.value = "Soumettre";
+
         form = document.getElementById("my-form");
         form.appendChild(hiddenItemsInput);
         form.appendChild(macInput);
         form.appendChild(javax);
+	form.appendChild(smtr);
 
         // Update the form's action URL
         form.action = nmsDiag;

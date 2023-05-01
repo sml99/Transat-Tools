@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function openTab(url) {
         window.open(url, "_blank");
     }
-    const trimNum = (number) => number.replace(/\D/g, "");
+    const trimNum = (number) => number?.replace(/\D/g, "");
 
     // Define variables for the input elements
     const customerServiceInput = document.getElementById("customer-service-id");
@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const tasksBtn = document.getElementById("tasks-btn");
     const nmsBtn = document.getElementById("nms-btn");
     const shippingBtn = document.getElementById("shippings-btn");
+    const pbxBtn = document.getElementById("pbx-btn");
+    const sipBtn = document.getElementById("sip-btn");
+    const centreServBtn = document.getElementById("csv-btn");
+    const bellHomeBtn = document.getElementById("bel-btn");
+    const switchboardBtn = document.getElementById("sb-btn");
+    const switchboardLogBtn = document.getElementById("sbl-btn");
 
     /////////////////
     let lastInterventionLink = "";
@@ -45,12 +51,17 @@ document.addEventListener("DOMContentLoaded", function () {
             radiusIdInput.value = response.t1 ?? "";
             lastInterventionLink = response?.lastInterventionLink;
         }
-        searchInput.value = trimNum(request.number) ?? "";
+        searchInput.value = trimNum(request?.number ?? "") ?? "";
+        const nms = request?.nms;
+        if (nms) {
+            vlIdInput.value = nms?.vl ?? "";
+            macInput.value = nms?.mac ?? "";
+        }
         // else customerServiceInput.value = request.url;
     });
 
     // Add click event listeners to the buttons
-    customerServiceBtn.addEventListener("click", function () {
+    customerServiceBtn?.addEventListener("click", function () {
         const customerId = customerServiceInput.value;
         const url = "http://10.40.99.8:8080/Transat-CRM/Client/show-" + customerId + "-client";
 
@@ -65,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    customerInterBtn.addEventListener("click", function () {
+    customerInterBtn?.addEventListener("click", function () {
         //Open last intervention
         if (lastInterventionLink) openTab(lastInterventionLink);
     });
@@ -75,14 +86,14 @@ document.addEventListener("DOMContentLoaded", function () {
         openTab(url);
     });
 
-    radiusIdBtn.addEventListener("click", function () {
+    radiusIdBtn?.addEventListener("click", function () {
         const radiusId = radiusIdInput.value;
         const url =
             "http://10.10.10.30/radiusmanager/admin.php?cont=edit_user&username=" + radiusId + "@transattelecom.ca";
         if (radiusId) openTab(url);
     });
 
-    bellIdBtn.addEventListener("click", function () {
+    bellIdBtn?.addEventListener("click", function () {
         const bellId = bellIdInput.value;
         const url =
             "https://hots.businessportal.bell.ca/portal/wholesale/gas.nsf/AdminAllOrdersCOE/" +
@@ -91,14 +102,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (bellId) openTab(url);
     });
 
-    vlIdBtn.addEventListener("click", function () {
+    vlIdBtn?.addEventListener("click", function () {
         const vlId = vlIdInput.value;
         const url =
             "https://extranet.videotron.com/services/secur/extranet/tpia/Usage.do?lang=FRENCH&compteInternet=" + vlId;
         if (vlId) openTab(url);
     });
 
-    mapsIdBtn.addEventListener("click", function () {
+    mapsIdBtn?.addEventListener("click", function () {
         const mapsId = mapsIdInput.value;
         const formattedMapsId = mapsId.split(" ").join("+");
         const url =
@@ -108,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (mapsId) openTab(url);
     });
 
-    trackIdBtn.addEventListener("click", function () {
+    trackIdBtn?.addEventListener("click", function () {
         const trackId = trackIdInput.value;
         const formattedTrackId = trackId.split(" ").join("");
         const url = "https://www.canadapost-postescanada.ca/track-reperage/fr#/details/" + formattedTrackId;
@@ -116,23 +127,53 @@ document.addEventListener("DOMContentLoaded", function () {
         openTab(url);
     });
 
-    /*interventionsBtn.addEventListener("click", function () {
+    interventionsBtn?.addEventListener("click", function () {
         const url = "http://10.40.99.8:8080/Transat-CRM/Client/listFichInterStatusUser-0";
         openTab(url);
     });
 
-    tasksBtn.addEventListener("click", function () {
+    tasksBtn?.addEventListener("click", function () {
         const url = "http://10.40.99.8:8080/Transat-CRM/Client/taskcritiques";
         openTab(url);
-    });*/
+    });
 
     nmsBtn?.addEventListener("click", function () {
         const url = "https://aitp-tpia.videotron.com/prodfsi/tpias/";
         openTab(url);
     });
 
-    shippingBtn.addEventListener("click", function () {
+    pbxBtn?.addEventListener("click", function () {
+        const url = "https://pbx.fonotel.net/";
+        openTab(url);
+    });
+
+    sipBtn?.addEventListener("click", function () {
+        const url = "https://sip.fonotel.net/";
+        openTab(url);
+    });
+
+    centreServBtn?.addEventListener("click", function () {
+        const url = "https://www.centredeservices.videotron.com/default.aspx";
+        openTab(url);
+    });
+
+    bellHomeBtn?.addEventListener("click", function () {
+        const url = "https://www.app1.businessportal.bell.ca/cis/view/dashboard.xhtml";
+        openTab(url);
+    });
+
+    shippingBtn?.addEventListener("click", function () {
         const url = "http://10.40.99.8:8080/Transat-CRM/shipping/1";
+        openTab(url);
+    });
+
+    switchboardBtn?.addEventListener("click", function () {
+        const url = "https://10.40.99.5/realtime/";
+        openTab(url);
+    });
+
+    switchboardLogBtn?.addEventListener("click", function () {
+        const url = "https://10.40.99.5/main?cmd=cdr_log";
         openTab(url);
     });
 
@@ -161,13 +202,29 @@ async function scrapeIt() {
             func: scrapeCall,
         });
 
+    if (url.match("https://aitp-tpia.videotron.com/"))
+        chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            func: scrapeDataFromNms,
+        });
+
     /* if (url.match("http://10.10.10.30/radiusmanager/admin.php"))
 	chrome.scripting.executeScript({
             target: { tabId: tab.id },
             func: scrapeDataFromRadius,
         });   */
 }
+function scrapeDataFromNms() {
+    const html = document.body.innerHTML;
+    const vl = html.match(/[Vv][Ll][A-Za-z\d]{6}/);
+    const body = document.getElementById("mainForm:j_idt16").innerHTML;
+    const mac = body.match(
+        /Mac[\s\S]*<span class=\"normalWeight nmsTextElement dashGradeNA\">([A-Za-z\d]{12})<\/span>[\S\s]*Num/
+    );
 
+    //	alert(vl);
+    if (vl) chrome.runtime.sendMessage({ nms: { vl, mac: mac?.[1] } });
+}
 /*
 function scrapeDataFromRadius() {
 //const regex = /^([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])\.([01]?\d{1,2}|2[0-4]\d|25[0-5])$/;
