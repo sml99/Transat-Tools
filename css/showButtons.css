@@ -103,12 +103,12 @@ button:hover {
     border: none;
     border-radius: 4px;
     background-color: transparent;
-    transition: transform 0.2s ease-in-out;
+    transition: 0.6s ease-in-out;
     cursor: pointer;
 }
 
 .show-buttons button:hover {
-    background-color: #eee;
+    background-color: #fff;
 }
 
 .show-buttons button img {
@@ -117,7 +117,7 @@ button:hover {
 }
 
 .show-buttons button:hover img {
-    transform: scale(1.2);
+    transform: scale(1.5);
 }
 
 #number-days {
